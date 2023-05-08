@@ -15,19 +15,20 @@
 У Аркадия id всегда равно 0.
 Для каждого футбольного матча выведите одно целое число — количество игроков с разницей мячей больше, чем у Аркадия.
 
-```workers, plays = map(int, input().split(" "))
-mas=[0]*workers #массив с разницами
+```
+workers, plays = map(int, input().split(" "))
+mas=[0]*workers #массив для счетов
 for i in range(plays):
-    Agoals, Bgoals = map(int, input().split(" ")) # 6 15, голы
-    # дальше workers чисел
-    teams=list(map(int, input().split(" ")))
-    for j in range(0,5):
+    Agoals, Bgoals = map(int, input().split(" ")) 
+    # дальше по 10 чисел с командами
+    teams=list(map(int, input().split(" "))) # делим на команды А и В
+    for j in range(0,5): #команда А
         mas[teams[j]] += Agoals - Bgoals
-    for j in range(5,10):
+    for j in range(5,10): # Команда В
         mas[teams[j]] += Bgoals - Agoals
     ans = 0
     for i in range(1, workers):
         if mas[i] > mas[0]:
             ans += 1
-    print(ans)
+    print(ans) # выводим позицию Аркадия после каждой игры
 ```
